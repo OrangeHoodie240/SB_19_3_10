@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Question {{ question_num }}
+{% endblock %}
+
+{% block flash %}
+    {{ get_flashed_messages()[0] }}
+{% endblock %}
+
+{% block header %}
+    Question {{ question_num }}
+{% endblock %}
+
+{% block main %}
+
+    <h2>{{ question.question }}</h2>
+    <form method='POST' action="/answer/{{ question_num }}">
+
+        <label for='{{ question.choices[0] }}'>{{ question.choices[0] }}: </label>
+        <input type='radio' id='{{ question.choices[0] }}' name='answer' value='{{ question.choices[0] }}' /> 
+        <label for='{{ question.choices[1] }}'>{{ question.choices[1]}}: </label>
+        <input type='radio' id='{{ question.choices[1] }}' name='answer' value='{{ question.choices[1] }}' /> 
+
+
+        <button>Answer</button>
+    </form>
+{% endblock %}
